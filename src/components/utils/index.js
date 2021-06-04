@@ -7,3 +7,11 @@ export const getUniqueOptions = data => {
   });
   return options;
 }
+
+const validateEmail = mail => /\S+@\S+\.\S+/.test(mail);
+
+export const validateEmails = str => {
+  const separators = /[\n,;\s]/;
+  const list = str.split(separators);
+  return list.filter(email => !validateEmail(email));
+}
